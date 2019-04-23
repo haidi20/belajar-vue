@@ -1,4 +1,5 @@
 # www
+[link belajar](https://www.youtube.com/watch?v=5lVQgZzLMHc&list=WL&index=6&t=1918s).
 
 ## Project setup
 ```
