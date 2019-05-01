@@ -1,5 +1,10 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer } = require("apollo-server");
 const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'typeDefs.gql');
+const typeDefs = fs.readFileSync(filePath, 'utf-8');
 
 require('dotenv').config({ path: 'variable.env' });
 const User = require('./models/User');
@@ -15,17 +20,6 @@ mongoose
 
 // Set useCreateIndex
 mongoose.set('useCreateIndex', true);
-
-const typeDefs = gql`
-	type Todo {
-		task: String
-		completed: Boolean
-	}
-
-	type Query { 
-		getTodos: [Todo]
-	}
-`
 
 const server = new ApolloServer({
 	typeDefs,
