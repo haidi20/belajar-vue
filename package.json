@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "client": "cd client && npm run serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
   },
   "dependencies": {
     "axios": "^0.18.0",
