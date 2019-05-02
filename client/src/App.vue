@@ -1,16 +1,61 @@
 <template>
   <v-app>
     <h1>App</h1>
-    <router-view />
+
+    <!-- Horizontal Navbar -->
+    <v-toolbar fixed color="primary" dark> 
+      <!-- App Title -->
+      <v-toolbar-side-icon> </v-toolbar-side-icon>
+      <v-toolbar-title>
+        <!-- tag="span" for show that text  -->
+        <router-link to="/" tag="span" style="cursor:pointer;"> 
+          VueShare
+        </router-link>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <!-- Search Input -->
+      <v-text-field
+        flex 
+        prepend-icon="search"
+        placeholder="Search Post"
+        color="accent"
+        single-line-hide-details
+      ></v-text-field>
+
+      <v-spacer></v-spacer>
+
+      <!-- Horizontal navbar links -->
+
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn flat v-for="item in horizontalNavItems" :key="item.title" :to="item.link">
+          <v-icon left>{{item.icon}}</v-icon>
+          {{item.title}}
+        </v-btn>
+      </v-toolbar-items>
+
+    </v-toolbar>
+
+    <!-- App Content -->
+    <main class="mt-4">
+      <router-view />
+    </main>
   </v-app>
 </template>
 
 <script>
-import Home from './components/Home';
+
 export default {
   name: 'App',
-  components: {
-    Home
+  computed: {
+    horizontalNavItems(){
+      return [
+        {icon: 'chat', title: 'Posts', link: '/posts'},
+        {icon: 'lock_open', title: 'Sign In', link: '/signin'},
+        {icon: 'create', title: 'Sign Up', link: '/signup'},
+      ]
+    }
   }
 }
 </script>
