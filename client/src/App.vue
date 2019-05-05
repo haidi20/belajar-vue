@@ -13,7 +13,7 @@
       <v-divider></v-divider>
 
       <v-list >
-        <v-list-tile v-for="item in sideNavItems" :key="item.title" :to="item.link">
+        <v-list-tile ripple v-for="item in sideNavItems" :key="item.title" :to="item.link">
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
@@ -50,7 +50,6 @@
       <v-spacer></v-spacer>
 
       <!-- Horizontal navbar links -->
-
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat v-for="item in horizontalNavItems" :key="item.title" :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
