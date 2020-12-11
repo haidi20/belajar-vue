@@ -1,6 +1,5 @@
 <template>
    <div>
-        <h1 align="center">App Component</h1>
         <router-view></router-view>
    </div>
 </template>
