@@ -1,7 +1,8 @@
 <template>
     <div>
         <h4>Add a Event</h4>
-        <div class="form">
+        <input type="checkbox" v-model="showForm">
+        <div class="form" v-if="showForm">
             <div class="form-group">
                 <label for="">Title</label>
                 <input type="text" class="form-control" v-model="event.title">
@@ -25,13 +26,20 @@ import {eventsRef} from '../firebaseApp'
                     email: '',
                     title: '',
                     description: '',
-                }
+                },
+                showForm: true,
             }
         },
         methods: {
             addEvent() {
                 this.event.email = this.$store.state.user.email;
-                eventsRef.push(this.event);
+                eventsRef.push(this.event)
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             }
         },
     }
